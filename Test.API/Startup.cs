@@ -36,14 +36,13 @@ namespace Test.API
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
             services.AddApplicationInsightsTelemetry(_configuration);
 
             // memory cache
             services.AddMemoryCache();
-            services.AddMvc(options =>
-            {
-                options.EnableEndpointRouting = false;
-            }).AddJsonOptions(options =>
+            services.AddMvc()
+            .AddJsonOptions(options =>
                 {
                     options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
                     options.JsonSerializerOptions.IgnoreNullValues = true;
@@ -79,17 +78,16 @@ namespace Test.API
                 eventArgs.Cancel = true;
             };
 
+            app.UseRouting();
+            app.UseSecurityMiddleware();
+            app.UseUserValidation();
+
             // websockets
             var webSocketOptions = new WebSocketOptions
             {
                 KeepAliveInterval = TimeSpan.FromSeconds(120)
             };
             app.UseWebSockets(webSocketOptions);
-
-            app.UseRouting();
-
-            app.UseSecurityMiddleware();
-            app.UseUserValidation();
             app.UseWebSocketMiddleware();
 
             // put last so header configs like CORS or Cookies etc can fire
@@ -97,8 +95,6 @@ namespace Test.API
             {
                 endpoints.MapControllers();
             });
-
-            app.UseMvc();
         }
 
         /// <summary>
@@ -106,7 +102,7 @@ namespace Test.API
         /// </summary>
         private void OnStarted()
         {
-            Debug.WriteLine("Started API");
+            Debug.WriteLine("Started Core API");
         }
 
         /// <summary>
@@ -114,7 +110,7 @@ namespace Test.API
         /// </summary>
         private void OnStopping()
         {
-            Debug.WriteLine("Stopping API");
+            Debug.WriteLine("Stopping Core API");
         }
 
         /// <summary>
@@ -122,7 +118,7 @@ namespace Test.API
         /// </summary>
         private void OnStopped()
         {
-            Debug.WriteLine("Stopped API");
+            Debug.WriteLine("Stopped Core API");
         }
     }
 
