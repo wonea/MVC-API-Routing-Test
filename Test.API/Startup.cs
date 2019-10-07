@@ -102,7 +102,7 @@ namespace Test.API
         /// </summary>
         private void OnStarted()
         {
-            Debug.WriteLine("Started Core API");
+            Debug.WriteLine("Started API");
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Test.API
         /// </summary>
         private void OnStopping()
         {
-            Debug.WriteLine("Stopping Core API");
+            Debug.WriteLine("Stopping API");
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Test.API
         /// </summary>
         private void OnStopped()
         {
-            Debug.WriteLine("Stopped Core API");
+            Debug.WriteLine("Stopped API");
         }
     }
 
