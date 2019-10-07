@@ -5,8 +5,8 @@ namespace Test.API.Controllers
     /// <summary>
     /// Main Controller
     /// </summary>
-    [Route("api/[controller]")]
-    public class MainController : Controller
+    [Route(""), ApiController]
+    public class MainController : ControllerBase
     {
         [HttpGet]
         public string Get()
