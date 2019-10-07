@@ -79,17 +79,17 @@ namespace Test.API
                 eventArgs.Cancel = true;
             };
 
-            app.UseRouting();
-            app.UseSecurityMiddleware();
-            app.UseUserValidation();
-            app.UseMvc();
-
             // websockets
             var webSocketOptions = new WebSocketOptions
             {
                 KeepAliveInterval = TimeSpan.FromSeconds(120)
             };
             app.UseWebSockets(webSocketOptions);
+
+            app.UseRouting();
+
+            app.UseSecurityMiddleware();
+            app.UseUserValidation();
             app.UseWebSocketMiddleware();
 
             // put last so header configs like CORS or Cookies etc can fire
@@ -97,6 +97,8 @@ namespace Test.API
             {
                 endpoints.MapControllers();
             });
+
+            app.UseMvc();
         }
 
         /// <summary>
@@ -104,7 +106,7 @@ namespace Test.API
         /// </summary>
         private void OnStarted()
         {
-            Debug.WriteLine("Started Core API");
+            Debug.WriteLine("Started API");
         }
 
         /// <summary>
@@ -112,7 +114,7 @@ namespace Test.API
         /// </summary>
         private void OnStopping()
         {
-            Debug.WriteLine("Stopping Core API");
+            Debug.WriteLine("Stopping API");
         }
 
         /// <summary>
@@ -120,7 +122,7 @@ namespace Test.API
         /// </summary>
         private void OnStopped()
         {
-            Debug.WriteLine("Stopped Core API");
+            Debug.WriteLine("Stopped API");
         }
     }
 
