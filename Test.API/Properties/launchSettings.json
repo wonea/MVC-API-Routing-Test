@@ -4,18 +4,18 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://localhost:51234/api/main",
+      "applicationUrl": "http://localhost:51234",
       "sslPort": 0
     },
     "iisExpress": {
-      "applicationUrl": "http://localhost:51234/api/main",
+      "applicationUrl": "http://localhost:51234",
       "sslPort": 0
     }
   },
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchUrl": "",
+      "launchUrl": "api/main",
       "launchBrowser": true,
       "applicationUrl": "http://localhost:51234/api/main"
     },
