@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost:51234/api/main",
+      "sslPort": 0
+    },
+    "iisExpress": {
+      "applicationUrl": "http://localhost:51234/api/main",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchUrl": "",
+      "launchBrowser": true,
+      "applicationUrl": "http://localhost:51234/api/main"
+    },
+    "IIS": {
+      "commandName": "IIS"
+    },
+    "Database Deployment": {
+      "commandName": "Project",
+      "commandLineArgs": "database -m $true"
+    }
+  }
+}
